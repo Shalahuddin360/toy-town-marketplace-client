@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import './AddToys.css'
 // import Select from 'react-select';
 import CreatableSelect from "react-select/creatable";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 const AddToys = () => {
+    
     const [selectedOption, setSelectedOption] = useState(null);
+    const {user} = useContext(AuthContext)
     const { register,
         handleSubmit,
         // watch,
@@ -67,6 +70,7 @@ const AddToys = () => {
                                 {...register("email", { required: true })}
                                 placeholder="Enter Your Seller Email :"
                                 type="email"
+                                value={user?.email}
                             />
                             <input
                                 className="text-input"
@@ -94,7 +98,7 @@ const AddToys = () => {
                             </select>
 
                             <select className="text-input" {...register("status")}>
-                                <option value="remote">Remote</option>
+                                <option value="scooter">scooter</option>
                                 <option value="offline">Offline</option>
                             </select>
                             {/* <Select

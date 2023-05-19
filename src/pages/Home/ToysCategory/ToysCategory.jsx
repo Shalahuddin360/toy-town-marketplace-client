@@ -1,8 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './ToysCategory.css'
+import Toy from "../Toy/Toy";
 
 const ToysCategory = () => {
-    const [activeTab,setActiveTab] = useState('remote')
+    const [activeTab,setActiveTab] = useState('');
+    const [toys,setToys] = useState([])
+    // console.log(toys)
+     useEffect(()=>{
+         fetch(`http://localhost:5000/allToys/${activeTab}`)
+         .then(res=>res.json())
+         .then(data=>{
+            setToys(data)
+         })
+       },[activeTab])
+
+    // const result = toys?.filter(toy=>toy.status ==activeTab)
+    //  setToys(result);
+
     const handleTabClick =(tabName)=>{
         setActiveTab(tabName);
     }
@@ -12,8 +26,8 @@ const ToysCategory = () => {
             <div className="">
                 <div className="text-center w-100 m-auto">
                   <div className="tabs d-flex justify-center items-center bg-base-100 drop-shadow-2xl ">
-                     <div onClick={()=>handleTabClick('remote')} className={`tabs tabs1 remote ${activeTab == "remote" ? "bg-red-600  text-white" : ""}`}>
-                          Remote
+                     <div onClick={()=>handleTabClick('scooter')} className={`tabs tabs1 scooter ${activeTab == "scooter" ? "bg-red-600  text-white" : ""}`}>
+                          scooter
                      </div>
 
                      <div onClick={()=>handleTabClick('offline')} className={`tabs tabs1 offline ${activeTab == "offline" ? "bg-red-600 text-white" : ""}`}>
@@ -26,7 +40,15 @@ const ToysCategory = () => {
                   </div>
                 </div>
             </div>
-            
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 mb-4">
+                {/* <p>this is : {toys.length}</p> */}
+                {
+                    toys?.map(toy=><Toy 
+                    key={toy._id}
+                    toy={toy}
+                    ></Toy>)
+                }
+             </div>
         </div>
     );
 };
