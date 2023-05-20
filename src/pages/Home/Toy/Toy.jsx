@@ -10,7 +10,7 @@ const Toy = ({ toy }) => {
                 <p>Name :{sellerName}</p>
                 <p>Price :{price}</p>
                 <p>Rating :{rating}</p>
-                <p>Quantity :{availableQuantity}</p>
+                {/* <p>Quantity :{availableQuantity}</p>
                 <p>Sub Category :{status}</p>
                 <div className="flex flex-wrap justify-start items-center">
                  {
@@ -19,10 +19,10 @@ const Toy = ({ toy }) => {
                     className="btn btn-outline mr-2"
                     >{vou.value}</button> )
                  }
-               </div>
-                <div className="card-actions justify-end text-red-700 cursor-pointer">
+               </div> */}
+                <div className="card-actions justify-start text-red-700 cursor-pointer">
                     {/* <FaArrowRight /> */}
-                    <button className="btn btn-active btn-primary">View Toy Details</button>
+                    <button className="btn btn-active btn-primary">Toy Details</button>
                 </div>
             </div>
         </div>

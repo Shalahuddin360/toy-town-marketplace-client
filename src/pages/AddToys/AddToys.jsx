@@ -63,7 +63,7 @@ const AddToys = () => {
                                 className="text-input"
                                 {...register("sellerName", { required: true })}
                                 placeholder="Enter Your Seller Name :"
-                                defaultValue="salauddin"
+                                defaultValue="Shalahuddin"
                             />
                             <input
                                 className="text-input"
