@@ -13,7 +13,7 @@ const ToysCategory = () => {
             setToys(data)
          })
        },[activeTab])
-
+       console.log(toys)
     // const result = toys?.filter(toy=>toy.status ==activeTab)
     //  setToys(result);
 
@@ -22,26 +22,28 @@ const ToysCategory = () => {
     }
     return (
         <div className="my-5">
-            <h1 className="text-center mt-5 p-5 font-extrabold text-3xl">Available Toys Category </h1>
+            <h1 className="text-center mt-5 p-5 font-extrabold text-3xl">Available Electronics Toys Category </h1>
             <div className="">
                 <div className="text-center w-100 m-auto">
                   <div className="tabs d-flex justify-center items-center bg-base-100 drop-shadow-2xl ">
                      <div onClick={()=>handleTabClick('scooter')} className={`tabs tabs1 scooter ${activeTab == "scooter" ? "bg-red-600  text-white" : ""}`}>
-                          scooter
+                          Scooter
                      </div>
 
-                     <div onClick={()=>handleTabClick('offline')} className={`tabs tabs1 offline ${activeTab == "offline" ? "bg-red-600 text-white" : ""}`}>
-                          Offline
+                     <div onClick={()=>handleTabClick('drone')} className={`tabs tabs1 drone ${activeTab == "drone" ? "bg-red-600 text-white" : ""}`}>
+                         Nano Drone
+                        
                      </div>
-                     <div onClick={()=>handleTabClick('part-time')} className={`tabs tabs1 part-time ${activeTab == "part-time" ? "bg-red-600 text-white" : ""}`}>
-                         Part-Time
+                     <div onClick={()=>handleTabClick('stroller')} className={`tabs tabs1 stroller ${activeTab == "stroller" ? "bg-red-600 text-white" : ""}`}>
+                         stroller
                      </div>
                    
                   </div>
                 </div>
             </div>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 mb-4">
-                {/* <p>this is : {toys.length}</p> */}
+                <p>this is : {toys.length}</p>
+              
                 {
                     toys?.map(toy=><Toy 
                     key={toy._id}

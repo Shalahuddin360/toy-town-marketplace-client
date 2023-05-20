@@ -15,7 +15,7 @@ const AddToys = () => {
         formState: { errors }
     } = useForm();
     const onSubmit = data => {
-        data.skills = selectedOption;
+        data.voucher = selectedOption;
         // send data to the server 
 
         fetch('http://localhost:5000/postToy', {
@@ -31,14 +31,14 @@ const AddToys = () => {
     }
     console.log(selectedOption)
     const options = [
-        { value: "JavaScript", label: "JavaScript" },
-        { value: "C++", label: "C++" },
-        { value: "HTML", label: "HTML" },
-        { value: "CSS", label: "CSS" },
-        { value: "React", label: "React" },
-        { value: "Node", label: "Node" },
-        { value: "MongoDB", label: "MongoDB" },
-        { value: "Redux", label: "Redux" },
+        { value: "Voucher $2 Off", label: "Voucher $2 Off" },
+        { value: "Voucher $3 Off", label: "Voucher $3 Off" },
+        { value: "Voucher $3 Off", label: "Voucher $1 Off" },
+        { value: "Voucher $5 Off", label: "Voucher $5 Off" },
+        { value: "Voucher $4 Off", label: "Voucher $4 Off" },
+        { value: "Voucher $6 Off", label: "Voucher $6 Off" },
+        { value: "Voucher $7 Off", label: "Voucher $7 Off" },
+        { value: "Voucher $8 Off", label: "Voucher $8 Off" },
     ];
     return (
         <div>
@@ -49,15 +49,15 @@ const AddToys = () => {
                             {errors.exampleRequired && <span>This field is required</span>}
                             <input
                                 className="text-input"
-                                {...register("picture")}
+                                {...register("picture",{ required: true })}
                                 placeholder="Enter Your Toy Picture URL :"
-                                defaultValue="Web developer"
+                                
                             />
                             <input
                                 className="text-input"
-                                {...register("title")}
+                                {...register("title",{ required: true })}
                                 placeholder="Choose Your Toy Name :"
-                                defaultValue="Web developer"
+                               
                             />
                             <input
                                 className="text-input"
@@ -90,16 +90,18 @@ const AddToys = () => {
                                 placeholder="Enter Your Toy Available Quantity:"
                                 type="number"
                             />
-                            <select className="text-input" {...register("category")}>
-                                <option value="Engineering">engineering</option>
-                                <option value="Editor">Editor</option>
-                                <option value="writer">Writer</option>
-                                <option value="Developer">Developer</option>
+                            <select className="text-input" {...register("size",{ required: true })} >
+                          
+                                <option value="D8">D8</option>
+                                <option value="D6">D6</option>
+                                <option value="A7">A7</option>
+                                <option value="A5">A5</option>
                             </select>
 
-                            <select className="text-input" {...register("status")}>
+                            <select className="text-input" {...register("status",{ required: true })}>
                                 <option value="scooter">scooter</option>
-                                <option value="offline">Offline</option>
+                                <option value="drone">drone</option>
+                                <option value="stroller">stroller</option>
                             </select>
                             {/* <Select
                                 defaultValue={selectedOption}
@@ -107,8 +109,8 @@ const AddToys = () => {
                                 options={options}
                                 isMulti
                             /> */}
-                            <CreatableSelect
-                                className="w-75"
+                            <CreatableSelect 
+                                className="w-75 text-blue-800 bg-amber-500"
                                 defaultValue={selectedOption}
                                 onChange={setSelectedOption}
                                 options={options}
@@ -120,8 +122,6 @@ const AddToys = () => {
                                 placeholder="Enter Your description:"
                                 type="text"
                             />
-
-
 
                             <input className="submit-btn" value="PostToy" type="submit" />
                         </form>
