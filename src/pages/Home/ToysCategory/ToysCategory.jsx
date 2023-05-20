@@ -21,8 +21,8 @@ const ToysCategory = () => {
         setActiveTab(tabName);
     }
     return (
-        <div className="my-5">
-            <h1 className="text-center mt-5 p-5 font-extrabold text-3xl">Available Electronics Toys Category </h1>
+        <div className="my-8">
+            <h1 className="text-center mt-5 p-5 font-extrabold text-3xl mt-5">Available Electronics Toys Category </h1>
             <div className="">
                 <div className="text-center w-100 m-auto">
                   <div className="tabs d-flex justify-center items-center bg-base-100 drop-shadow-2xl ">

@@ -1,4 +1,6 @@
 // import { FaArrowRight } from "react-icons/fa";
+import Rating from 'react-rating'
+import { FaRegStar, FaStar } from "react-icons/fa";
 const Toy = ({ toy }) => {
     const { _id, picture, title, email, sellerName, price, rating, availableQuantity,description,voucher,status } = toy || {}
 //    console.log(toy,voucher)
@@ -9,7 +11,20 @@ const Toy = ({ toy }) => {
                 <h2 className="card-title">{title}</h2>
                 <p>Name :{sellerName}</p>
                 <p>Price :{price}</p>
+                <div className='flex'>
                 <p>Rating :{rating}</p>
+                     <span>
+                            <Rating
+                                placeholderRating={rating}
+                                readonly
+                                emptySymbol={<FaRegStar />}
+                                placeholderSymbol={<FaStar className='text-yellow-600' />}
+                                fullSymbol={<FaStar />}
+                            >
+
+                            </Rating>
+                        </span>
+                </div>
                 {/* <p>Quantity :{availableQuantity}</p>
                 <p>Sub Category :{status}</p>
                 <div className="flex flex-wrap justify-start items-center">

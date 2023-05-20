@@ -13,8 +13,9 @@ const Gallery = () => {
     return (
     <div className="mt-4">
          <div className="text-center">
-            <h3 className="text-orange-600 text-5xl font-bold ">Toys Gallery </h3>
-            <p>Various categories of children is toys including small toys are shown below in card form</p>
+            <h3 className="text-yellow-600 text-5xl font-bold ">Shop Our Store  </h3>
+            <p className="text-2xl mt-4">Various categories of children is toys including small toys are shown below in card form</p>
+            <p> <span className="text-yellow-600  font-semibold ">Camera Drone Usa SellsTop Name Brand Drones</span> </p>
          </div>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {
