@@ -2,8 +2,8 @@ import Rating from 'react-rating'
 import { FaRegStar, FaStar } from "react-icons/fa";
 
 const GallaryCard = ({ toy }) => {
-    const { toyPicture, toyName, toyPrice, toyRating, toyDescription } = toy
-    // console.log(toyName , toyPicture)
+    const { toyPicture, toyName, toyPrice, toyRating } = toy
+    // console.log(toyName , toyPicture ,toyDescription)
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
