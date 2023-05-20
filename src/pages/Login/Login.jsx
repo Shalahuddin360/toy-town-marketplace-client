@@ -1,10 +1,11 @@
 
 import { Link } from 'react-router-dom';
 import img from '../../assets/login/login.svg'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 const Login = () => {
     const {signIn} = useContext(AuthContext)
+    const [show,setShow] = useState(false)
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
@@ -56,7 +57,12 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                            <input type={show ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" />
+                            <p className='text-right cursor-pointer' onClick={()=>setShow(!show)}><small>
+                                {
+                                    show ? <span>Hide Password</span> : <span> Show Password</span>
+                                }
+                                </small></p>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
