@@ -9,19 +9,19 @@ const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState("")
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys/${user?.email}`)
+        fetch(`http://localhost:5000/myToys/${user?.email}`,)
             .then(res => res.json())
             .then(data => setMyToys(data))
     }, [user])
-    console.log(myToys)
+    console.log(myToys);
     // console.log(myToys["0"].picture)
-    for ( const mt of myToys){
-        console.log(mt)
-      }
+    // for ( const mt of myToys){
+    //     console.log(mt)
+    //   }
      
     return (
         <div>
-            <h2>{myToys.length}</h2>
+            <h2>This is Toys: {myToys.length}</h2>
           
           
           
