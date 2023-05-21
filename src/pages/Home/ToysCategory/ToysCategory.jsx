@@ -7,7 +7,7 @@ const ToysCategory = () => {
     const [toys,setToys] = useState([])
     // console.log(toys)
      useEffect(()=>{
-         fetch(`https://toy-town-server-smoky.vercel.app/allToys/${activeTab}`)
+         fetch(`http://localhost:5000/allToys/${activeTab}`)
          .then(res=>res.json())
          .then(data=>{
             setToys(data)

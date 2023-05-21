@@ -1,6 +1,7 @@
 // import { FaArrowRight } from "react-icons/fa";
 import Rating from 'react-rating'
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const Toy = ({ toy }) => {
     const { _id, picture, title, email, sellerName, price, rating, availableQuantity,description,voucher,status } = toy || {}
 //    console.log(toy,voucher)
@@ -37,7 +38,7 @@ const Toy = ({ toy }) => {
                </div> */}
                 <div className="card-actions justify-start text-red-700 cursor-pointer">
                     {/* <FaArrowRight /> */}
-                    <button className="btn btn-active btn-primary">Toy Details</button>
+                    <button className="btn btn-active btn-primary"> <Link to={`/toy/${_id}`}></Link> </button>
                 </div>
             </div>
         </div>

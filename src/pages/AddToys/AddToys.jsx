@@ -72,6 +72,8 @@ const AddToys = () => {
                                 type="email"
                                 value={user?.email}
                             />
+                    
+
                             <input
                                 className="text-input"
                                 {...register("price", { required: true })}
