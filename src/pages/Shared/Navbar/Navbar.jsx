@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import logo from '../../../assets/header-logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
       .then(result => {
-        const loggedUser = result.user; 
+        const loggedUser = result.user;
         console.log(loggedUser)
       })
       .catch(error => {
@@ -20,7 +20,7 @@ const Navbar = () => {
 
     <li className="font-bold" ><Link to="/allToys">All Toys</Link></li>
     <li className="font-bold" ><Link to="/blog">Blog</Link></li>
-   
+
 
     {user?.email ? (
       <>
@@ -29,32 +29,32 @@ const Navbar = () => {
         <li className="p-2 font-bold ">
           <button onClick={handleLogOut}>Logout</button>
 
-       </li>
-       <li>{user?.displayName}</li>
-       <li>
-       
-       <div className="avatar">
-              <div className="mask rounded-xl w-12 h-12">
-                <img  title={user?.displayName} src={user?.photoURL} alt="Avatar Tailwind CSS Component" />
-              </div>
-        </div>
+        </li>
+        <li>{user?.displayName}</li>
+        <li>
 
-       </li>
-      
-        
+          <div className="avatar">
+            <div className="mask rounded-xl w-12 h-12">
+              <img title={user?.displayName} src={user?.photoURL} alt="Avatar Tailwind CSS Component" />
+            </div>
+          </div>
+
+        </li>
+
+
       </>
     ) : (
       <Link className="menu-item font-bold" to="/login">
         <li>Login</li>
-        <li>{<FaUserCircle/>}</li>
+        <li>{<FaUserCircle />}</li>
       </Link>
     )}
 
 
 
 
-     <li className="font-bold" ><Link to="/signup">Registration</Link></li>
-    </>
+    <li className="font-bold" ><Link to="/signup">Registration</Link></li>
+  </>
 
   return (
     <div className="navbar bg-base-100 h-24 mt-4">
