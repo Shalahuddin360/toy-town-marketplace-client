@@ -13,7 +13,7 @@ const ToysCategory = () => {
             setToys(data)
          })
        },[activeTab])
-       console.log(toys)
+    //    console.log(toys)
     // const result = toys?.filter(toy=>toy.status ==activeTab)
     //  setToys(result);
 

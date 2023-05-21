@@ -3,8 +3,8 @@ import Rating from 'react-rating'
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 const Toy = ({ toy }) => {
-    const { _id, picture, title, email, sellerName, price, rating, availableQuantity,description,voucher,status } = toy || {}
-//    console.log(_id)
+    const { _id, picture, title,  sellerName, price, rating, } = toy || {}
+//    console.log(_id) //availableQuantity,description,voucher,status,email,
     return (
         <div className="card card-side bg-base-100 shadow-xl">
             <figure><img className="w-48 rounded-md p-2" src={picture} alt="picture" /></figure>

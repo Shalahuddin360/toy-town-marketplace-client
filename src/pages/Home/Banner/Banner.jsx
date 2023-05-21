@@ -5,14 +5,14 @@ import img4 from '../../../assets/slider/s8.jpg';
 import img5 from '../../../assets/slider/s9.jpg';
 import img6 from '../../../assets/slider/s6.jpg';
 const Banner = () => {
-    return (
+    return ( 
         <div>
       <div className="carousel w-full h-[600px]">
         <div id="slide1" className="carousel-item relative w-full">
           <img src={img1} className="w-full rounded-xl" />
           <div className="absolute flex items-center h-full rounded-xl left-0 bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className='space-y-7 w-1/2 pl-12'>
-              <h2 className='text-6xl text-white font-bold'>Affordable Price for Car Servicing </h2>
+              <h2 className='text-6xl text-white font-bold'>Affordable Toys Marketplace </h2>
               <p>They are many variations  of passage of available but the majority have suffered alteration in some  </p>
               <div>
                 <button className="btn btn-primary mr-5">Discover More</button>
@@ -29,7 +29,7 @@ const Banner = () => {
         <img src={img2} className="w-full rounded-xl" />
           <div className="absolute flex items-center h-full rounded-xl left-0 bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className='space-y-7 w-1/2 pl-12'>
-              <h2 className='text-6xl text-white font-bold'>Affordable Price for Car Servicing </h2>
+              <h2 className='text-6xl text-white font-bold'>Affordable Toys Marketplace ??</h2>
               <p>They are many variations  of passage of available but the majority have suffered alteration in some  </p>
               <div>
                 <button className="btn btn-primary mr-5">Discover More</button>
