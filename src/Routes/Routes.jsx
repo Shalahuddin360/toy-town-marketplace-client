@@ -8,6 +8,8 @@ import ErrorPage from "../pages/Home/ErrorPage/ErrorPage";
 import AllToys from "../pages/Home/AllToys/AllToys";
 import MyToys from "../pages/Home/Home/MyToys/MyToys";
 import SingleToy from "../pages/Home/Home/SingleToy/SingleToy";
+import PrivateRoutes from "./PrivateRoutes.jsx/PrivateRoutes";
+import Blog from "../pages/Home/Home/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -44,9 +46,13 @@ const router = createBrowserRouter([
        
         },
         {
+          path:'/blog',
+          element:<Blog></Blog>
+        },
+        {
           path:"/toy/:id",
-          element:<SingleToy></SingleToy>,
-          // loader:({params})=>{fetch(`http://localhost:5000/singleToy/${params.id}`)}
+          element:<PrivateRoutes><SingleToy></SingleToy>,</PrivateRoutes>
+          // loader:({params})=>{fetch(`https://toy-town-server-smoky.vercel.app/singleToy/${params.id}`)}
 
         }
 

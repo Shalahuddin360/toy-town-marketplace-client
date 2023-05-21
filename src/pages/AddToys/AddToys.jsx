@@ -18,7 +18,7 @@ const AddToys = () => {
         data.voucher = selectedOption;
         // send data to the server 
 
-        fetch('http://localhost:5000/postToy',{
+        fetch('https://toy-town-server-smoky.vercel.app/postToy',{
             method: 'POST',
             headers: {"content-type": "application/json" },
             body:JSON.stringify(data)

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from '../../../assets/header-logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { FaUserCircle} from "react-icons/fa";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -15,21 +16,46 @@ const Navbar = () => {
       })
   }
   const navItems = <>
-    <li><Link to="/">Home</Link></li>
-    <li><Link to="/about">About</Link></li>
-    <li><Link to="/addToys">Add Toys</Link></li>
-    <li><Link to="/allToys">All Toys</Link></li>
-    <li><Link to="/myToys">My Toys</Link></li>
+    <li className="font-bold" ><Link to="/">Home</Link></li>
+
+    <li className="font-bold" ><Link to="/allToys">All Toys</Link></li>
+    <li className="font-bold" ><Link to="/blog">Blog</Link></li>
+   
+
     {user?.email ? (
-      <li className="p-2">
-        <button onClick={handleLogOut}>Logout</button>
-      </li>
+      <>
+        <li className="font-bold" ><Link to="/addToys">Add Toys</Link></li>
+        <li className="font-bold" ><Link to="/myToys">My Toys</Link></li>
+        <li className="p-2 font-bold ">
+          <button onClick={handleLogOut}>Logout</button>
+
+       </li>
+       <li>{user?.displayName}</li>
+       <li>
+       
+       <div className="avatar">
+              <div className="mask rounded-xl w-12 h-12">
+                <img  title={user?.displayName} src={user?.photoURL} alt="Avatar Tailwind CSS Component" />
+              </div>
+        </div>
+
+       </li>
+      
+        
+      </>
     ) : (
-      <Link className="menu-item" to="/login">
+      <Link className="menu-item font-bold" to="/login">
         <li>Login</li>
+        <li>{<FaUserCircle/>}</li>
       </Link>
     )}
-  </>
+
+
+
+
+     <li className="font-bold" ><Link to="/signup">Registration</Link></li>
+    </>
+
   return (
     <div className="navbar bg-base-100 h-24 mt-4">
       <div className="navbar-start">
@@ -41,8 +67,9 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case ">
           <img src={logo} alt="" />
+          <p><small className="text-yellow-600" >Toy Town</small></p>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -50,9 +77,7 @@ const Navbar = () => {
           {navItems}
         </ul>
       </div>
-      <div className="navbar-end">
-        <button className="btn btn-warning">Warning</button>
-      </div>
+
     </div>
   );
 };

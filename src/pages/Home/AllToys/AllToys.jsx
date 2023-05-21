@@ -7,7 +7,7 @@ const AllToys = () => {
     const [text, setText] = useState(["abc"]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allToys/${text}`)
+        fetch(`https://toy-town-server-smoky.vercel.app/allToys/${text}`)
             .then(res => res.json())
             .then(data => setText(data))
 

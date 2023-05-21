@@ -1,11 +1,17 @@
 
-import { Link } from 'react-router-dom';
-import img from '../../assets/login/login.svg'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import img from '../../assets/login/login.png'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 const Login = () => {
-    const {signIn} = useContext(AuthContext)
+    const {signIn,signInWithGoogle,userUpdateProfile } = useContext(AuthContext)
+    const navigate =useNavigate();
     const [show,setShow] = useState(false)
+    const [success,setSuccess] = useState("");
+    const [error,setError] = useState("");
+    const location = useLocation();
+    const from =location.state?.from?.pathname || '/'
+    console.log('login page location',location)
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
@@ -13,16 +19,48 @@ const Login = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
+        setError("")
+        setSuccess("")
         // const user ={email,password}
-        console.log(form,name,photo,email,password)
+        // console.log(form,name,photo,email,password)
 
         signIn(email,password)
         .then(result=>{
             const user = result.user
-         console.log(user)
+             console.log(user)
+             setSuccess("user Login Successfully");
+             navigate(from , { replace: true })
+             event.target.reset();
         })
         .catch(error=>{
             console.log(error);
+            setError(error.message)
+        })
+        userUpdateProfile(name,photo)
+        .then(result=>{
+            const update = result.user;
+            console.log(update)
+            setSuccess('user photo updated successfully')
+        })
+        .catch(error =>{
+            console.log(error)
+            setError(error.message)
+        })
+        
+    }
+    const handleGoogleSignIn =()=>{
+        setError("")
+        setSuccess("")
+        signInWithGoogle()
+        .then(result=>{
+            setSuccess("user Google Signin Successfully")
+            const gooGleUser = result.user
+            console.log(gooGleUser)
+            navigate(from , { replace: true })
+        })
+        .catch(error =>{
+            console.log(error)
+            setError(error.message)
         })
     }
     return (
@@ -39,25 +77,25 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="Enter Your Name : " className="input input-bordered" />
+                            <input type="text" name='name' placeholder="Enter Your Name : " className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name='photo' placeholder="Enter Your Photo URL : " className="input input-bordered" />
+                            <input type="text" name='photo' placeholder="Enter Your Photo URL : " className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type={show ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" />
+                            <input type={show ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" required />
                             <p className='text-right cursor-pointer' onClick={()=>setShow(!show)}><small>
                                 {
                                     show ? <span>Hide Password</span> : <span> Show Password</span>
@@ -73,6 +111,9 @@ const Login = () => {
                     </form>
                     <p className='my-4 text-center'>New To Car Doctors ? Please <Link className='text-orange-600 font-bold' to="/signup">SignUp</Link></p>
 
+                    <button onClick={handleGoogleSignIn} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Sign In With Google</button>
+                    <p className='font-bold text-red-600'>{success}</p>
+                    <p className='font-bold text-red-600'>{error}</p>
                 </div>
             </div>
         </div>
