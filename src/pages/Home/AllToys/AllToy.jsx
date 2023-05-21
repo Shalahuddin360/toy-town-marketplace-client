@@ -36,8 +36,9 @@ const AllToy = ({ at }) => {
                     </div>
                 </td>
                 <th>
-                    <button className="btn btn-primary btn-xs">details</button>
+                    <button className="btn btn-primary btn-xs">Details</button>
                 </th>
+         
             </tr>
         </div>
     );

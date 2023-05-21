@@ -5,6 +5,8 @@ import AllToy from "./AllToy";
 
 const AllToys = () => {
     const [text, setText] = useState(["abc"]);
+    const [searchText, setSearchText] = useState("");
+   
 
     useEffect(() => {
         fetch(`https://toy-town-server-smoky.vercel.app/allToys/${text}`)
@@ -12,11 +14,26 @@ const AllToys = () => {
             .then(data => setText(data))
 
     }, [])
-    console.log(text);
+
+    // console.log(text);
+
+    const handleSearch =()=>{
+        fetch(`https://toy-town-server-smoky.vercel.app/toySearchByTitle/${searchText}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setText(data);
+        });
+    }
 
     return (
         <div>
-            <h2>This is all toys: {text.length}</h2>
+            {/* <h2 className="text-3xl">This is all toys: {text.length}</h2> */}
+            <div className="text-center">
+                <input  placeholder="Enter Your Test Search :" onChange={(e) => setSearchText(e.target.value)} type="text" className="p-4 rounded-md" /> {" "}
+
+                <button onClick={handleSearch} className="font-bold">Search</button>
+            </div>
 
             <div className="overflow-x-auto">
 
@@ -35,6 +52,7 @@ const AllToys = () => {
                             <th>price</th>
                             <th>Quantity</th>
                             <th>Details</th>
+                          
                         </tr>
                     </thead>
 

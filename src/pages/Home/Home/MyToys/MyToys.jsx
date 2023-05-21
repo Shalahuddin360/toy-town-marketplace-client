@@ -16,15 +16,12 @@ const MyToys = () => {
     // console.log(myToys);  
     return (
         <div>
-            <h2>This is Toys: {myToys.length}</h2>
-
-
-
+        
             <div>
                 <div className="overflow-x-auto w-full">
-                    <table className="table w-50 mx-auto ">
+                    <table className="table w-full mx-auto ">
 
-                        <thead className="w-50">
+                        <thead className="w-full">
                             <tr>
                                 <th>
                                     <label>
@@ -34,7 +31,8 @@ const MyToys = () => {
                                 <th  >quantity</th>
                                 <th>price</th>
                                 <th>discription</th>
-                                <th>Details</th>
+                                <th>Edit</th>
+                                <th>Action</th>
 
                             </tr>
                         </thead>
